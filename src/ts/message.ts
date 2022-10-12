@@ -114,7 +114,7 @@ export function printMessage(fileName: string, exportMap: ExportMap, messageDesc
           valueTypeName = "Uint8Array | string";
         }
         if (valueType === ENUM_TYPE) {
-          valueTypeName = `${valueTypeName}[keyof ${valueTypeName}]`;
+          valueTypeName = `${valueTypeName}`;
         }
         printer.printIndentedLn(`get${withUppercase}Map(): jspb.Map<${keyTypeName}, ${valueTypeName}>;`);
         printer.printIndentedLn(`clear${withUppercase}Map(): void;`);
@@ -140,7 +140,7 @@ export function printMessage(fileName: string, exportMap: ExportMap, messageDesc
       } else {
         exportType = filePathToPseudoNamespace(fieldEnumType.fileName) + "." + withinNamespace;
       }
-      exportType = `${exportType}[keyof ${exportType}]`;
+      exportType = `${exportType}`;
     } else {
       const fieldOptions = field.getOptions();
       if (fieldOptions && fieldOptions.hasJstype()) {
