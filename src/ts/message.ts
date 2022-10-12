@@ -140,7 +140,7 @@ export function printMessage(fileName: string, exportMap: ExportMap, messageDesc
       } else {
         exportType = filePathToPseudoNamespace(fieldEnumType.fileName) + "." + withinNamespace;
       }
-      exportType = `${exportType}Map[keyof ${exportType}Map]`;
+      exportType = `${exportType}[keyof ${exportType}]`;
     } else {
       const fieldOptions = field.getOptions();
       if (fieldOptions && fieldOptions.hasJstype()) {
